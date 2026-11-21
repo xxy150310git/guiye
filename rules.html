@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>服务器规定 · 归野 Wiki</title>
+    <meta name="description" content="归野生存服务器完整规则：卡服、物品、铁路、地铁、城镇、行为与处罚。" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle" aria-label="切换导航">
+        <i class="fas fa-bars"></i>
+        <span style="font-size:0.8rem;font-weight:500;">菜单</span>
+    </button>
+
+    <!-- 遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== 侧边栏 ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-cube"></i>
+            <span>归野 Wiki</span>
+            <small>v3.0</small>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title"><i class="fas fa-compass" style="margin-right:0.4rem;"></i> 导航</div>
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a class="active" href="rules.html"><i class="fas fa-gavel"></i> 服务器规则</a>
+                <a href="players.html"><i class="fas fa-users"></i> 玩家名单</a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title"><i class="fas fa-link"></i> 快捷</div>
+                <a href="https://v.wjx.cn/vm/YYvvb5z.aspx" target="_blank"><i class="fas fa-pen-fancy"></i> 区块加载申请</a>
+                <a href="rules.html#acc-kafu"><i class="fas fa-fighter-jet"></i> 飞行载具限高</a>
+                <a href="rules.html#acc-rail"><i class="fas fa-drafting-compass"></i> 铁路规划</a>
+                <a href="rules.html#acc-punish"><i class="fas fa-clipboard-list"></i> 举报与申诉</a>
+            </div>
+        </nav>
+
+        <div style="padding:1rem 1.5rem;font-size:0.7rem;color:#8b949e;border-top:1px solid #2d333b;margin-top:auto;text-align:center;">
+            <i class="fas fa-code-branch"></i> 最后修订 · 2026
+        </div>
+    </aside>
+
+    <!-- ===== 主内容 ===== -->
+    <main class="main" id="top">
+
+<div class="page active" id="page-rules">
+            <header class="page-header">
+                <h1><i class="fas fa-gavel"></i> 服务器规定</h1>
+                <div class="subtitle">
+                    <i class="fas fa-map-pin"></i> 归野 · 生存服务器
+                    <span class="badge"><i class="fas fa-check-circle"></i> 生效中</span>
+                    <span style="color:var(--text-muted);font-size:0.8rem;margin-left:0.3rem;">
+                        <i class="far fa-clock"></i> 2026-11-21
+                    </span>
+                </div>
+            </header>
+
+            <!-- ===== 折叠面板 ===== -->
+            <div class="accordion">
+
+                <!-- 卡服篇 -->
+                <div class="accordion-item open">
+                    <div class="accordion-header" data-target="acc-kafu">
+                        <span class="accordion-icon"><i class="fas fa-shield-alt"></i></span>
+                        <span class="accordion-title">卡服篇</span>
+                        <span class="accordion-badge" style="background:#ffe3e6;color:#b31d28;">零容忍</span>
+                        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-body" id="acc-kafu">
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#1</span>
+                                <div class="rule-body">
+                                    <strong>完全禁止卡服行为</strong>
+                                    <span class="tag danger">禁令</span>
+                                    <p style="margin-top:0.3rem;">无论出于任何目的，服务器完全禁止任何形式的卡服行为。包括但不限于：</p>
+                                    <ul>
+                                        <li>利用游戏漏洞</li>
+                                        <li>大量实体堆积</li>
+                                        <li>高频红石电路</li>
+                                        <li>不当使用加载区块</li>
+                                    </ul>
+                                    <div class="callout danger">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <strong>零容忍政策：</strong> 一经发现将视情节严重程度予以 <strong>警告</strong>、<strong>临时封禁</strong> 或 <strong>永久封禁</strong>。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#2</span>
+                                <div class="rule-body">
+                                    <strong>飞行载具高度限制</strong>
+                                    <span class="tag warn">限高</span>
+                                    <p style="margin-top:0.3rem;">飞行载具（飞机、飞艇等）飞行高度必须严格控制在 <strong>120 格以下</strong>，同时 <strong>不低于 60 格</strong>。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-info-circle"></i>
+                                        旨在确保空中交通安全有序，避免碰撞，同时优化服务器性能，减少渲染负载。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#3</span>
+                                <div class="rule-body">
+                                    <strong>其他载具运行高度</strong>
+                                    <span class="tag info">范围</span>
+                                    <p style="margin-top:0.3rem;">除飞行载具外，所有载具（地面车辆、船只、矿车等）运行高度必须在 <span class="code-inline">-48</span> 至 <span class="code-inline">256</span> 格范围内。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-arrows-alt-v"></i>
+                                        维护世界结构稳定性与视觉一致性，防止极端高度导致地形加载异常或逻辑错误。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#4</span>
+                                <div class="rule-body">
+                                    <strong>区块常加载 · 需申请</strong>
+                                    <span class="tag green">必须审批</span>
+                                    <p style="margin-top:0.3rem;">如需使用区块常加载功能（自动化农场、刷怪塔、红石装置等），必须 <strong>事先填写申请问卷</strong> 并获得批准。</p>
+                                    <p style="margin-top:0.3rem;">
+                                        <i class="fas fa-external-link-alt" style="color:var(--accent-blue);"></i>
+                                        <a href="https://v.wjx.cn/vm/YYvvb5z.aspx" target="_blank" class="link-icon">https://v.wjx.cn/vm/YYvvb5z.aspx</a>
+                                    </p>
+                                    <div class="callout warning">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <strong>仅允许弱加载：</strong> 必须通过 <strong>末影珍珠加载器</strong> 实现，严禁使用其他强加载方式。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#5</span>
+                                <div class="rule-body">
+                                    <strong>自动化装置须报备</strong>
+                                    <span class="tag green">审批</span>
+                                    <p style="margin-top:0.3rem;">使用红石或模组自动化装置进行大规模生产（自动化农场、矿物处理线、熔炉阵列、村民交易站等）之前，须向管理组报备 <strong>装置类型、核心区块坐标</strong> 与大致规模。</p>
+                                    <div class="callout warning">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        未报备且对服务器性能造成明显影响（TPS 持续偏低、区块加载异常）的装置，管理组有权要求限期整改，必要时先行停用。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#6</span>
+                                <div class="rule-body">
+                                    <strong>实体与掉落物密度</strong>
+                                    <span class="tag info">性能</span>
+                                    <p style="margin-top:0.3rem;">严禁在公共区域、交通枢纽或他人家园附近维持高密度实体与大量散落掉落物。</p>
+                                    <ul>
+                                        <li>单区块堆叠实体建议控制在 <span class="code-inline">200</span> 个以内</li>
+                                        <li>掉落物须及时拾取或清理，不得以「装饰」名义长期堆放</li>
+                                        <li>展示用盔甲架、物品展示框等需控制数量并集中摆放</li>
+                                    </ul>
+                                    <div class="callout">
+                                        <i class="fas fa-broom"></i>
+                                        服务器会定期清理长时间未拾取的掉落物，清理前不另行通知。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 物品篇 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-target="acc-item">
+                        <span class="accordion-icon"><i class="fas fa-box-open"></i></span>
+                        <span class="accordion-title">物品篇</span>
+                        <span class="accordion-badge" style="background:#fff4e5;color:#a15c00;">公平</span>
+                        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-body" id="acc-item">
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#1</span>
+                                <div class="rule-body">
+                                    <strong>禁止复制「无法量产」物品</strong>
+                                    <span class="tag danger">禁令</span>
+                                    <p style="margin-top:0.3rem;">严禁使用物品复制机（含各类红石复制装置、机械动力自动化复制结构等）复制 <strong>无法量产</strong> 的物品。此类物品在正常游玩中获取数量有限，复制会直接破坏服务器经济与进度平衡。</p>
+                                    <p style="margin-top:0.3rem;">包括但不限于：</p>
+                                    <ul>
+                                        <li>下界之星、龙蛋、鞘翅等唯一性或极稀有物品</li>
+                                        <li>附魔金苹果、不死图腾、海洋之心、回响碎片等无法稳定再生的战利品</li>
+                                        <li>带有唯一属性或绑定的物品（如限量附魔装备、玩家专属命名物品）</li>
+                                        <li>管理组认定的其他不可量产物品</li>
+                                    </ul>
+                                    <div class="callout danger">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <strong>违规处理：</strong> 一经查实，复制所得物品将 <strong>全部销毁</strong>，复制装置 <strong>强制拆除</strong>，并视情节严重程度予以 <strong>警告</strong> 至 <strong>封禁</strong>。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#2</span>
+                                <div class="rule-body">
+                                    <strong>「可量产」的界定</strong>
+                                    <span class="tag warn">判定</span>
+                                    <p style="margin-top:0.3rem;">「可量产」指能够通过正常生存玩法 <strong>稳定、重复获取</strong> 的物品，例如铁、金、钻石、木材、农作物与常规怪物掉落等。是否属于可量产存在争议时，<strong>以管理组判定为准</strong>，建议提前咨询后再搭建复制设施。</p>
+                                    <div class="callout warning">
+                                        <i class="fas fa-info-circle"></i>
+                                        即便复制的是可量产物品，也不得借此进行大规模堆积或造成卡服；相关自动化设施仍须遵守「卡服篇 #4 区块常加载」的申请流程。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#3</span>
+                                <div class="rule-body">
+                                    <strong>复制设施须登记</strong>
+                                    <span class="tag green">报备</span>
+                                    <p style="margin-top:0.3rem;">仅可量产物品允许复制，且复制设施须在管理组 <strong>登记位置坐标与工作原理</strong>，并遵守卡服篇关于性能与实体密度的规定。未登记的设施一经发现先行停用，补登记后方可恢复运行。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-lock"></i>
+                                        登记信息仅管理组可见，用于性能评估与物品来源追溯。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 铁路篇 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-target="acc-rail">
+                        <span class="accordion-icon"><i class="fas fa-train"></i></span>
+                        <span class="accordion-title">铁路篇</span>
+                        <span class="accordion-badge" style="background:#ddf4ff;color:#0550ae;">机械动力</span>
+                        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-body" id="acc-rail">
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#1</span>
+                                <div class="rule-body">
+                                    <strong>规划图纸先行</strong>
+                                    <span class="tag">审批</span>
+                                    <p style="margin-top:0.3rem;">建设铁路前须准备：</p>
+                                    <ul>
+                                        <li>详细的铁路线路规划图</li>
+                                        <li>途径的所有车站列表</li>
+                                        <li>各车站内部设施配置图</li>
+                                    </ul>
+                                    <p style="margin-top:0.3rem;">全部材料提交给管理员 <strong>xxy150310</strong> 审核。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-clipboard-check"></i>
+                                        完整图纸有助于评估网络合理性、兼容性及服务器性能影响。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#2</span>
+                                <div class="rule-body">
+                                    <strong>枢纽选址须务实</strong>
+                                    <span class="tag warn">客流导向</span>
+                                    <p style="margin-top:0.3rem;">车站规划应注重实际客流需求，避免在客流量较小的区域设置大型铁路枢纽。枢纽车站通常需处理多方向、高频率车流，设在客流稀疏处会造成资源浪费并增加管理复杂性。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#3</span>
+                                <div class="rule-body">
+                                    <strong>低客流线路可能搁置</strong>
+                                    <span class="tag warn">动态调整</span>
+                                    <p style="margin-top:0.3rem;">若某铁路计划运行区域客流量长期较低，建设申请或已建内容可能被 <strong>暂时搁置或作废</strong>。鼓励玩家优先在活跃区域发展交通网络。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#4</span>
+                                <div class="rule-body">
+                                    <strong>高度限制 · 隧道建议</strong>
+                                    <span class="tag info">工程规范</span>
+                                    <p style="margin-top:0.3rem;">铁路建设适用载具高度规定：<span class="code-inline">-48</span> ～ <span class="code-inline">256</span> 格。隧道可穿越山地，但建议主线 <strong>避免在 0 格以下深度</strong> 铺设，除非有特殊地形或设计需求。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-mountain"></i>
+                                        兼顾工程稳定性与视觉美观。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#5</span>
+                                <div class="rule-body">
+                                    <strong>枢纽必须建设互通连接线</strong>
+                                    <span class="tag">效率</span>
+                                    <p style="margin-top:0.3rem;">多条线路交汇的车站，必须建设完善的互通连接线，确保不同方向列车高效、安全转换轨道。避免死胡同或单向通行设计。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#6</span>
+                                <div class="rule-body">
+                                    <strong>统一使用「机械动力」模组</strong>
+                                    <span class="tag green">强制</span>
+                                    <p style="margin-top:0.3rem;">服务器内所有铁路及相关设施必须使用 <strong>「机械动力」</strong> 模组建造。该模组提供丰富的轨道组件、信号系统和动力装置，支持复杂、真实的铁路运营模拟。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#7</span>
+                                <div class="rule-body">
+                                    <strong>线路命名与标识规范</strong>
+                                    <span class="tag">规范</span>
+                                    <p style="margin-top:0.3rem;">铁路线路须采用统一命名（如「1 号线」「环线」「A 城—B 城 城际线」），并在站牌、线路图与服务器公告中 <strong>保持一致</strong>。主要车站与换乘站须设置清晰的站名牌与方向指示。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-signs-post"></i>
+                                        统一的命名与标识，是玩家能顺利使用线路的前提。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#8</span>
+                                <div class="rule-body">
+                                    <strong>停运、改线与拆除须报备</strong>
+                                    <span class="tag warn">动态调整</span>
+                                    <p style="margin-top:0.3rem;">线路或车站需要停运、改线、拆除时，应提前告知管理组，说明原因与时间安排。拆除后须 <strong>恢复原地形</strong>，不得留下裸露基座、断头轨道或废弃结构。</p>
+                                    <div class="callout warning">
+                                        <i class="fas fa-recycle"></i>
+                                        长期无人维护且未报备的废弃线路，管理组有权代为清理。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 地铁篇 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-target="acc-metro">
+                        <span class="accordion-icon"><i class="fas fa-subway"></i></span>
+                        <span class="accordion-title">地铁篇</span>
+                        <span class="accordion-badge" style="background:#ddf4ff;color:#0550ae;">机械动力</span>
+                        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-body" id="acc-metro">
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#1</span>
+                                <div class="rule-body">
+                                    <strong>参照铁路篇审批流程</strong>
+                                    <span class="tag">参照</span>
+                                    <p style="margin-top:0.3rem;">地铁建设要求与铁路大部分类似，申请时需参照 <a href="#acc-rail" class="link-icon">铁路篇 #1</a>：提交线路图、车站表、设施配置图给 <strong>xxy150310</strong> 审批。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#2</span>
+                                <div class="rule-body">
+                                    <strong>小客流车站避免大型换乘</strong>
+                                    <span class="tag warn">务实</span>
+                                    <p style="margin-top:0.3rem;">小客流车站应尽量避免设计成 <strong>三线或以上</strong> 的大型换乘站。除非经规划确认为未来区域发展的重要客运枢纽，具有显著客流增长潜力和战略地位。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#3</span>
+                                <div class="rule-body">
+                                    <strong>优先地下 · 地面/高架限高 64 格</strong>
+                                    <span class="tag info">视觉管控</span>
+                                    <p style="margin-top:0.3rem;">地铁应尽量铺设于地下隧道中。若需建设地面站或高架车站，其站体及轨道结构高度 <strong>不得大于 64 格</strong>。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-city"></i>
+                                        控制地面视觉影响，保持城市天际线协调，减少对地表生态和其他建筑的遮挡。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#4</span>
+                                <div class="rule-body">
+                                    <strong>统一使用「机械动力」模组</strong>
+                                    <span class="tag green">强制</span>
+                                    <p style="margin-top:0.3rem;">地铁系统必须使用 <strong>「机械动力」</strong> 模组（含其铁路扩展组件）建造。该模组提供轨道、列车、信号系统与站台设施等专业化组件，可实现地铁与城市轨道交通的高度仿真运营体验。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#5</span>
+                                <div class="rule-body">
+                                    <strong>站距与换乘设计</strong>
+                                    <span class="tag info">工程规范</span>
+                                    <p style="margin-top:0.3rem;">市区段相邻车站间距建议不小于 <span class="code-inline">400</span> 格，郊区段可适当放宽。换乘站宜采用同台换乘，或设置独立换乘通道，换乘步行距离建议控制在 <span class="code-inline">128</span> 格以内。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-route"></i>
+                                        站距过密会拖慢运行效率，也会加重服务器计算负担。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#6</span>
+                                <div class="rule-body">
+                                    <strong>站台安全与导向</strong>
+                                    <span class="tag">安全</span>
+                                    <p style="margin-top:0.3rem;">站台须设置安全设施（屏蔽门、护栏或安全线），并配备充足照明与清晰导向标识。地下车站须保证疏散通道畅通，不得堆放杂物或封闭出入口。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 城镇篇 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-target="acc-town">
+                        <span class="accordion-icon"><i class="fas fa-city"></i></span>
+                        <span class="accordion-title">城镇篇</span>
+                        <span class="accordion-badge">宜居</span>
+                        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-body" id="acc-town">
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#1</span>
+                                <div class="rule-body">
+                                    <strong>高铁车站覆盖要求</strong>
+                                    <span class="tag info">通勤</span>
+                                    <p style="margin-top:0.3rem;">城镇选址或规划时，必须确保其 <strong>中心区域 1024 格范围内</strong> 设有高铁车站。若高铁站距离超过 <strong>512 格</strong>，则必须配备有效的通勤连接（如地铁或公交系统）。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-people-arrows"></i>
+                                        确保城镇居民便捷接入服务器主要交通网络。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#2</span>
+                                <div class="rule-body">
+                                    <strong>道路规划 · 照明</strong>
+                                    <span class="tag">安全</span>
+                                    <p style="margin-top:0.3rem;">城镇内部道路规划需清晰合理。</p>
+                                    <ul>
+                                        <li><strong>主干道</strong> 宽度不得小于 <span class="code-inline">5</span> 格，保证双向通行及紧急疏散。</li>
+                                        <li>所有道路（尤其是主干道和居民区街道）需配备 <strong>充足路灯或照明设施</strong>，保证夜间安全。</li>
+                                    </ul>
+                                    <div class="callout">
+                                        <i class="fas fa-lightbulb"></i>
+                                        营造宜居、安全的夜间环境。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#3</span>
+                                <div class="rule-body">
+                                    <strong>建筑高度与景观协调</strong>
+                                    <span class="tag">美学</span>
+                                    <p style="margin-top:0.3rem;">建筑高度无严格上限，但应充分考虑与周边自然景观、既有建筑群的协调性。避免突兀、比例失调的巨型结构，提倡 <strong>多样化和有层次的建筑风格</strong>，形成和谐统一的视觉印象。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#4</span>
+                                <div class="rule-body">
+                                    <strong>禁止大型工业设施</strong>
+                                    <span class="tag danger">禁止</span>
+                                    <p style="margin-top:0.3rem;">为维护居住品质，城镇区域内 <strong>严格禁止</strong> 设立大型工业设施（大型工厂、重型加工场等）。这些设施可能产生持续噪音、视觉污染或影响游戏性能。</p>
+                                    <div class="callout warning">
+                                        <i class="fas fa-bell"></i>
+                                        营造宁静、舒适的居住体验。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#5</span>
+                                <div class="rule-body">
+                                    <strong>公共区域整洁有序</strong>
+                                    <span class="tag danger">强制</span>
+                                    <p style="margin-top:0.3rem;">所有公共区域（广场、公园、街道、社区中心）必须保持整洁。</p>
+                                    <ul>
+                                        <li>严禁随意丢弃物品、堆放垃圾</li>
+                                        <li>严禁私自搭建临时性或违章建筑</li>
+                                    </ul>
+                                    <div class="callout danger">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <strong>违规处理：</strong> 收到整改通知后若未在规定时间内处理，相关物品或建筑将 <strong>强制拆除</strong>，玩家可能受到处罚。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#6</span>
+                                <div class="rule-body">
+                                    <strong>城镇登记与命名</strong>
+                                    <span class="tag green">登记</span>
+                                    <p style="margin-top:0.3rem;">新建城镇须向管理组登记：<strong>城镇名称、中心坐标、规划范围</strong> 与分期建设计划。登记后在该范围内享有优先建设权，同时承担相应的建设与维护责任。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-draw-polygon"></i>
+                                        未登记区域出现规划冲突时，以先登记者为准。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#7</span>
+                                <div class="rule-body">
+                                    <strong>边界预留与扩建争议</strong>
+                                    <span class="tag warn">协商</span>
+                                    <p style="margin-top:0.3rem;">城镇边界应预留扩建余地；扩建不得侵入他人已登记区域或既有建筑。出现边界争议时先自行协商，协商不成由管理组依据 <strong>登记时间与建设完成度</strong> 裁定。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 行为篇 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-target="acc-behavior">
+                        <span class="accordion-icon"><i class="fas fa-handshake"></i></span>
+                        <span class="accordion-title">行为篇</span>
+                        <span class="accordion-badge" style="background:#dafbe1;color:#1a7f37;">秩序</span>
+                        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-body" id="acc-behavior">
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#1</span>
+                                <div class="rule-body">
+                                    <strong>禁止破坏与偷窃</strong>
+                                    <span class="tag danger">禁令</span>
+                                    <p style="margin-top:0.3rem;">严禁未经允许破坏、改动他人建筑与设施，严禁擅自取用他人容器、载具或机械装置内的物品。车站、道路、照明等公共设施同样受保护。</p>
+                                    <div class="callout danger">
+                                        <i class="fas fa-gavel"></i>
+                                        <strong>违规处理：</strong> 须原样修复或等价赔偿，并视情节予以 <strong>警告</strong> 至 <strong>封禁</strong>。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#2</span>
+                                <div class="rule-body">
+                                    <strong>禁止作弊与违规客户端</strong>
+                                    <span class="tag danger">禁令</span>
+                                    <p style="margin-top:0.3rem;">严禁使用透视、飞行、杀戮光环、自动瞄准、变速等作弊功能，以及未经管理组批准的辅助模组。</p>
+                                    <ul>
+                                        <li><strong>允许：</strong> 小地图（不含洞穴透视）、性能优化模组、光影、服务器指定模组（机械动力等）</li>
+                                        <li><strong>禁止：</strong> 各类作弊客户端与自动化脚本</li>
+                                    </ul>
+                                    <div class="callout danger">
+                                        <i class="fas fa-ban"></i>
+                                        作弊一经查实，<strong>永久封禁</strong>，用于作弊的存档与物品一并处理。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#3</span>
+                                <div class="rule-body">
+                                    <strong>PVP 须双方自愿</strong>
+                                    <span class="tag warn">规则</span>
+                                    <p style="margin-top:0.3rem;">PVP 仅在双方明确同意的情况下进行。禁止偷袭、围堵出生点与出生保护区域、恶意追杀；禁止在他人驾驶载具或进行高空施工时发起攻击。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#4</span>
+                                <div class="rule-body">
+                                    <strong>聊天与言论规范</strong>
+                                    <span class="tag info">秩序</span>
+                                    <p style="margin-top:0.3rem;">公共频道请保持友善。禁止刷屏、人身攻击、发布广告与外链，禁止传播违法或不当内容。</p>
+                                    <div class="callout warning">
+                                        <i class="fas fa-comment-slash"></i>
+                                        屡次违规将予以禁言；情节严重者按 <strong>处罚篇</strong> 处理。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#5</span>
+                                <div class="rule-body">
+                                    <strong>交易与借贷自负风险</strong>
+                                    <span class="tag">提示</span>
+                                    <p style="margin-top:0.3rem;">玩家之间的交易、借贷与合作建设属自愿行为，风险自负。管理组不受理单纯的交易纠纷赔付，但可协助核实物品来源。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-receipt"></i>
+                                        大额交易建议保留聊天记录与截图，便于日后核对。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 处罚篇 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" data-target="acc-punish">
+                        <span class="accordion-icon"><i class="fas fa-clipboard-list"></i></span>
+                        <span class="accordion-title">处罚篇</span>
+                        <span class="accordion-badge" style="background:#ffe3e6;color:#b31d28;">申诉</span>
+                        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-body" id="acc-punish">
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#1</span>
+                                <div class="rule-body">
+                                    <strong>处罚分级</strong>
+                                    <span class="tag warn">分级</span>
+                                    <p style="margin-top:0.3rem;">违规处理分为三级，由管理组视情节、影响范围与配合态度判定：</p>
+                                    <ul>
+                                        <li><strong>一级 · 警告：</strong> 轻微或首次违规，限期整改</li>
+                                        <li><strong>二级 · 临时封禁：</strong> 1 ～ 7 天，情节较重或整改不到位</li>
+                                        <li><strong>三级 · 永久封禁：</strong> 卡服、作弊、恶意破坏等严重违规</li>
+                                    </ul>
+                                    <div class="callout danger">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        造成服务器数据损坏或大规模损失的，直接适用 <strong>三级</strong> 处罚。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#2</span>
+                                <div class="rule-body">
+                                    <strong>举报与举证</strong>
+                                    <span class="tag info">流程</span>
+                                    <p style="margin-top:0.3rem;">发现违规请保留证据（截图、坐标、时间）并联系管理组 <strong>xxy150310</strong>。举报内容仅管理组可见；恶意诬告同样按违规处理。</p>
+                                    <div class="callout">
+                                        <i class="fas fa-camera"></i>
+                                        证据越完整，处理越快。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rule-card">
+                            <div class="rule-head">
+                                <span class="rule-number">#3</span>
+                                <div class="rule-body">
+                                    <strong>申诉渠道</strong>
+                                    <span class="tag green">申诉</span>
+                                    <p style="margin-top:0.3rem;">对处罚有异议，可在处罚生效后 <strong>7 天内</strong> 向管理组提交申诉，说明情况并附证据。管理组将在 <strong>3 个工作日</strong> 内答复；永久封禁类申诉需由全体管理员复核。</p>
+                                    <div class="callout warning">
+                                        <i class="fas fa-hourglass-half"></i>
+                                        申诉期间原处罚继续执行。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /accordion -->
+
+            <!-- 附录 -->
+            <section style="margin-top:2.5rem;" id="sec-appendix">
+                <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border-light);padding:1.5rem 2rem;box-shadow:var(--shadow-sm);">
+                    <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;">
+                        <i class="fas fa-paperclip" style="color:var(--accent-blue);"></i> 附录 &amp; 链接
+                    </h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:1.2rem 2.5rem;">
+                        <div>
+                            <h4 style="font-size:0.9rem;font-weight:600;margin-bottom:0.3rem;display:flex;align-items:center;gap:0.4rem;">
+                                <i class="fas fa-file-signature" style="color:var(--accent-blue);"></i> 区块加载申请
+                            </h4>
+                            <a href="https://v.wjx.cn/vm/YYvvb5z.aspx" target="_blank" class="link-icon" style="font-size:0.95rem;">https://v.wjx.cn/vm/YYvvb5z.aspx</a>
+                        </div>
+                        <div>
+                            <h4 style="font-size:0.9rem;font-weight:600;margin-bottom:0.3rem;display:flex;align-items:center;gap:0.4rem;">
+                                <i class="fas fa-user-cog" style="color:var(--accent-blue);"></i> 管理员
+                            </h4>
+                            <span style="font-family:var(--font-mono);background:#f0f2f4;padding:0.1rem 0.8rem;border-radius:4px;">xxy150310</span>
+                            <span style="font-family:var(--font-mono);background:#f0f2f4;padding:0.1rem 0.8rem;border-radius:4px;">YuanHollow</span>
+                        </div>
+                        <div>
+                            <h4 style="font-size:0.9rem;font-weight:600;margin-bottom:0.3rem;display:flex;align-items:center;gap:0.4rem;">
+                                <i class="fas fa-cube" style="color:var(--accent-blue);"></i> 模组要求
+                            </h4>
+                            <span class="tag green">机械动力</span>
+                        </div>
+                    </div>
+                    <hr style="border:none;border-top:1px solid var(--border-light);margin:1.2rem 0 0.8rem 0;" />
+                    <p style="font-size:0.85rem;color:var(--text-muted);">
+                        <i class="far fa-clock"></i> 本规定最后修订于 2026-11-21 · 所有规则解释权归服务器管理团队所有。
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <span>
+                <i class="fas fa-cube"></i> 归野 · 生存服务器
+            </span>
+            <span>
+                <i class="fas fa-code-branch"></i> 基于 OI-Wiki 风格构建
+                <span style="margin:0 0.4rem;">·</span>
+                <a href="#" id="backToTop"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+            </span>
+        </footer>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- JavaScript -->
+    <!-- ============================================================ -->
+    <script src="js/main.js"></script>
+</body>
+</html>

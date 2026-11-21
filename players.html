@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>服务器玩家名单 · 归野 Wiki</title>
+    <meta name="description" content="归野生存服务器玩家名录：服主、管理员与玩家名单。" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle" aria-label="切换导航">
+        <i class="fas fa-bars"></i>
+        <span style="font-size:0.8rem;font-weight:500;">菜单</span>
+    </button>
+
+    <!-- 遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== 侧边栏 ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-cube"></i>
+            <span>归野 Wiki</span>
+            <small>v3.0</small>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title"><i class="fas fa-compass" style="margin-right:0.4rem;"></i> 导航</div>
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="rules.html"><i class="fas fa-gavel"></i> 服务器规则</a>
+                <a class="active" href="players.html"><i class="fas fa-users"></i> 玩家名单</a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title"><i class="fas fa-link"></i> 快捷</div>
+                <a href="https://v.wjx.cn/vm/YYvvb5z.aspx" target="_blank"><i class="fas fa-pen-fancy"></i> 区块加载申请</a>
+                <a href="rules.html#acc-kafu"><i class="fas fa-fighter-jet"></i> 飞行载具限高</a>
+                <a href="rules.html#acc-rail"><i class="fas fa-drafting-compass"></i> 铁路规划</a>
+                <a href="rules.html#acc-punish"><i class="fas fa-clipboard-list"></i> 举报与申诉</a>
+            </div>
+        </nav>
+
+        <div style="padding:1rem 1.5rem;font-size:0.7rem;color:#8b949e;border-top:1px solid #2d333b;margin-top:auto;text-align:center;">
+            <i class="fas fa-code-branch"></i> 最后修订 · 2026
+        </div>
+    </aside>
+
+    <!-- ===== 主内容 ===== -->
+    <main class="main" id="top">
+
+        <div class="page active" id="page-players">
+            <header class="page-header">
+                <h1><i class="fas fa-users"></i> 服务器玩家名单</h1>
+                <div class="subtitle">
+                    <i class="fas fa-map-pin"></i> 归野 · 生存服务器
+                    <span class="badge"><i class="fas fa-check-circle"></i> 持续更新</span>
+                    <span style="color:var(--text-muted);font-size:0.8rem;margin-left:0.3rem;">
+                        <i class="far fa-clock"></i> 2026-11-21
+                    </span>
+                </div>
+            </header>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label"><i class="fas fa-crown"></i> 服主</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label"><i class="fas fa-user-shield"></i> 管理员</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">9</div>
+                    <div class="stat-label"><i class="fas fa-user-group"></i> 玩家</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">11</div>
+                    <div class="stat-label"><i class="fas fa-address-book"></i> 在册合计</div>
+                </div>
+            </div>
+
+            <section class="roster-section">
+                <h2 class="roster-title">
+                    <i class="fas fa-crown" style="color:var(--accent-orange);"></i> 管理团队
+                    <span class="count">2 人</span>
+                </h2>
+                <div class="roster-grid">
+            <div class="player-card owner">
+                <div class="player-avatar">x</div>
+                <div class="player-info">
+                    <div class="player-name">xxy150310</div>
+                    <div class="player-role">服主 · 服务器所有者</div>
+                </div>
+            </div>
+            <div class="player-card admin">
+                <div class="player-avatar">Y</div>
+                <div class="player-info">
+                    <div class="player-name">YuanHollow</div>
+                    <div class="player-role">管理员</div>
+                </div>
+            </div>
+                </div>
+            </section>
+
+            <section class="roster-section">
+                <h2 class="roster-title">
+                    <i class="fas fa-user-group" style="color:var(--accent-blue);"></i> 玩家
+                    <span class="count">9 人</span>
+                </h2>
+                <div class="roster-grid">
+            <div class="player-card player">
+                <div class="player-avatar">T</div>
+                <div class="player-info">
+                    <div class="player-name">TTchen</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+            <div class="player-card player">
+                <div class="player-avatar">x</div>
+                <div class="player-info">
+                    <div class="player-name">xxz180529</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+            <div class="player-card player">
+                <div class="player-avatar">5</div>
+                <div class="player-info">
+                    <div class="player-name">5933</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+            <div class="player-card player">
+                <div class="player-avatar">H</div>
+                <div class="player-info">
+                    <div class="player-name">Houyuechen</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+            <div class="player-card player">
+                <div class="player-avatar">h</div>
+                <div class="player-info">
+                    <div class="player-name">hldxbt1234</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+            <div class="player-card player">
+                <div class="player-avatar">L</div>
+                <div class="player-info">
+                    <div class="player-name">LM11_Minecraft</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+            <div class="player-card player">
+                <div class="player-avatar">w</div>
+                <div class="player-info">
+                    <div class="player-name">whm333</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+            <div class="player-card player">
+                <div class="player-avatar">L</div>
+                <div class="player-info">
+                    <div class="player-name">Li_yu</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+            <div class="player-card player">
+                <div class="player-avatar">l</div>
+                <div class="player-info">
+                    <div class="player-name">luochenchen</div>
+                    <div class="player-role">玩家</div>
+                </div>
+            </div>
+                </div>
+            </section>
+
+            <section style="margin-top:2.5rem;">
+                <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border-light);padding:1.5rem 2rem;box-shadow:var(--shadow-sm);">
+                    <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;">
+                        <i class="fas fa-circle-info" style="color:var(--accent-blue);"></i> 名单说明
+                    </h3>
+                    <ul style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;padding-left:1.2rem;">
+                        <li>本名单按身份分组排列，同组内不区分先后。</li>
+                        <li>仅收录在服务器内长期活跃的玩家；新玩家加入后由管理组统一补录。</li>
+                        <li>如需增补、更正或申请移除自己的名字，请联系管理组 <strong>xxy150310</strong>。</li>
+                        <li>名单仅用于身份展示，不构成任何权限或义务约定。</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <span>
+                <i class="fas fa-cube"></i> 归野 · 生存服务器
+            </span>
+            <span>
+                <i class="fas fa-code-branch"></i> 基于 OI-Wiki 风格构建
+                <span style="margin:0 0.4rem;">·</span>
+                <a href="#" id="backToTop"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+            </span>
+        </footer>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- JavaScript -->
+    <!-- ============================================================ -->
+    <script src="js/main.js"></script>
+</body>
+</html>
