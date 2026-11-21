@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>常见问题 · 归野 Wiki</title>
+    <meta name="description" content="归野生存服务器常见问题：如何进服、必备模组下载、状态查询、规则与申诉联系方式。" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle" aria-label="切换导航">
+        <i class="fas fa-bars"></i>
+        <span style="font-size:0.8rem;font-weight:500;">菜单</span>
+    </button>
+
+    <!-- 遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== 侧边栏 ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-cube"></i>
+            <span>归野 Wiki</span>
+            <small>v3.0</small>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title"><i class="fas fa-compass" style="margin-right:0.4rem;"></i> 导航</div>
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <a href="rules.html"><i class="fas fa-gavel"></i> 服务器规则</a>
+                <a href="players.html"><i class="fas fa-users"></i> 玩家名单</a>
+                <a class="active" href="faq.html"><i class="fas fa-question-circle"></i> 常见问题</a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title"><i class="fas fa-link"></i> 快捷</div>
+                <a href="https://v.wjx.cn/vm/YYvvb5z.aspx" target="_blank"><i class="fas fa-pen-fancy"></i> 区块加载申请</a>
+                <a href="rules.html#acc-kafu"><i class="fas fa-fighter-jet"></i> 飞行载具限高</a>
+                <a href="rules.html#acc-rail"><i class="fas fa-drafting-compass"></i> 铁路规划</a>
+                <a href="rules.html#acc-punish"><i class="fas fa-clipboard-list"></i> 举报与申诉</a>
+            </div>
+        </nav>
+
+        <div style="padding:1rem 1.5rem;font-size:0.7rem;color:#8b949e;border-top:1px solid #2d333b;margin-top:auto;text-align:center;">
+            <i class="fas fa-code-branch"></i> 最后修订 · 2026
+        </div>
+    </aside>
+
+    <!-- ===== 主内容 ===== -->
+    <main class="main" id="top">
+
+        <div class="page active" id="page-faq">
+            <header class="page-header">
+                <h1><i class="fas fa-question-circle"></i> 常见问题</h1>
+                <div class="subtitle">
+                    <i class="fas fa-map-pin"></i> 归野 · 生存服务器
+                    <span class="badge"><i class="fas fa-check-circle"></i> 持续更新</span>
+                    <span style="color:var(--text-muted);font-size:0.8rem;margin-left:0.3rem;">
+                        <i class="far fa-clock"></i> 2026-11-21
+                    </span>
+                </div>
+            </header>
+
+            <!-- 快速联系 -->
+            <div class="home-card" style="margin-bottom:1.6rem;">
+                <div class="card-title"><i class="fas fa-headset"></i> 还没解决？直接找管理组</div>
+                <div class="card-body">
+                    <div class="contact-row">
+                        <div>
+                            <span class="contact-role">服主 · xxy150310</span>
+                            <span class="contact-val" data-cfg="contact.ownerQQ">3648142170</span>
+                        </div>
+                        <button class="btn-copy" type="button" data-copy="3648142170" title="复制 QQ 号">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="contact-row">
+                        <div>
+                            <span class="contact-role">管理员</span>
+                            <span class="contact-val">YuanHollow</span>
+                        </div>
+                        <a href="players.html" class="link-icon" style="font-size:0.78rem;">玩家名单</a>
+                    </div>
+                    <div class="info-note">
+                        <i class="fas fa-info-circle"></i> 提问时请附上 <strong>游戏 ID、发生时间、坐标与截图</strong>，处理会快很多喵。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 进服入门 -->
+            <section class="faq-group">
+                <h2 class="faq-group-title"><i class="fas fa-door-open"></i> 进服入门</h2>
+                <div class="faq">
+                    <div class="accordion-item open">
+                        <div class="accordion-header" data-target="faq-join">
+                            <span class="accordion-icon"><i class="fas fa-sign-in-alt"></i></span>
+                            <span class="accordion-title">怎么进入服务器？</span>
+                            <span class="accordion-badge">必读</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-join">
+                            <p>在 Minecraft 启动器里添加服务器，地址填以下任意一个：</p>
+                            <ul>
+                                <li>主地址：<code class="code-inline">zjt.rainplay.cn:19532</code></li>
+                                <li>IP 直连：<code class="code-inline">43.226.59.13:19532</code>（域名解析异常时用）</li>
+                            </ul>
+                            <p>进服前请先在服务器 QQ 群文件下载必备模组，完整装好后再连接。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-version">
+                            <span class="accordion-icon"><i class="fas fa-code-branch"></i></span>
+                            <span class="accordion-title">客户端版本有要求吗？</span>
+                            <span class="accordion-badge">1.21.1</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-version">
+                            <p>服务器当前运行 <strong>1.21.1 + NeoForge</strong>。客户端版本与加载器必须与服务端一致，否则会提示版本不兼容或直接连接失败。</p>
+                            <p>首页的实时状态面板会显示服务器当前版本，进服前可以先看一眼。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-mod">
+                            <span class="accordion-icon"><i class="fas fa-box-open"></i></span>
+                            <span class="accordion-title">必备模组在哪里下载？</span>
+                            <span class="accordion-badge">必读</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-mod">
+                            <p>必备模组统一放在 <strong>服务器 QQ 群文件</strong> 里，请从群文件下载，不要从其他网站随意下载同名模组。</p>
+                            <p>还没有进群？联系服主 QQ <strong>3648142170</strong> 说明来意即可。装好后请核对模组列表与群内清单一致，多余或缺少的模组都可能导致无法连接。</p>
+                            <p>另外：请勿安装透视、飞行、杀戮光环等作弊类模组，一经查实按「行为篇 #2」永久封禁。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-fail">
+                            <span class="accordion-icon"><i class="fas fa-plug"></i></span>
+                            <span class="accordion-title">进不去 / 一直卡在「正在连接」怎么办？</span>
+                            <span class="accordion-badge">排查</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-fail">
+                            <p>按顺序自查，通常前两步就能解决：</p>
+                            <ul>
+                                <li>首页状态面板是否显示「在线」——离线说明服务器在维护或重启，稍等几分钟。</li>
+                                <li>客户端版本是否为 1.21.1 + NeoForge，模组是否与群文件清单一致。</li>
+                                <li>地址是否完整带端口（<code class="code-inline">:19532</code> 不能漏）。</li>
+                                <li>换个地址试试：把域名换成 IP 直连 <code class="code-inline">43.226.59.13:19532</code>。</li>
+                                <li>重启启动器、检查网络代理；仍不行就把完整报错截图发给管理组。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 服务器信息 -->
+            <section class="faq-group">
+                <h2 class="faq-group-title"><i class="fas fa-server"></i> 服务器信息</h2>
+                <div class="faq">
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-status">
+                            <span class="accordion-icon"><i class="fas fa-signal"></i></span>
+                            <span class="accordion-title">在哪里看在线人数和开服状态？</span>
+                            <span class="accordion-badge">实时</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-status">
+                            <p>首页顶部的状态面板会显示 <strong>开服状态、在线人数、当前版本、查询延迟</strong>，并每 60 秒自动刷新，也可以点「刷新」立即更新。</p>
+                            <p>数据来自公开的 Minecraft 状态接口（mcstatus.io，备用 mcsrvstat.us），接口本身有约 1 分钟缓存，所以数字可能比游戏内稍慢一点。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-ping">
+                            <span class="accordion-icon"><i class="fas fa-tachometer-alt"></i></span>
+                            <span class="accordion-title">面板上的「延迟」是我游戏里的延迟吗？</span>
+                            <span class="accordion-badge">注意</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-ping">
+                            <p>不是哦。面板显示的是 <strong>本站向状态接口查询一次的往返耗时</strong>，用来反映查询通道是否顺畅，并不是你与游戏服务器之间的真实延迟。</p>
+                            <p>游戏内真实延迟请以客户端 <strong>Tab 玩家列表</strong> 右侧的信号格数为准。如果游戏内延迟很高，可以尝试更换网络或使用加速器。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-map">
+                            <span class="accordion-icon"><i class="fas fa-map"></i></span>
+                            <span class="accordion-title">服务器动态地图在哪看？</span>
+                            <span class="accordion-badge">建设中</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-map">
+                            <p>动态地图（BlueMap / Dynmap 一类）正在部署中，接入后首页「服务器地图」卡片会出现「打开地图」入口，并支持直接内嵌浏览。</p>
+                            <p>当前世界：<span data-cfg="server.world">归野 · 生存大陆</span>，主城坐标 <code class="code-inline">0, 64, 0</code>。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-host">
+                            <span class="accordion-icon"><i class="fas fa-cloud"></i></span>
+                            <span class="accordion-title">服务器跑在什么平台上？</span>
+                            <span class="accordion-badge">雨云</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-host">
+                            <p>服务器由 <strong>雨云游戏云</strong> 托管运行。控制台地址：<a href="https://app.rainyun.com/apps/rgs/45794/detail" target="_blank" rel="noopener" class="link-icon">app.rainyun.com/apps/rgs/45794/detail</a></p>
+                            <p>该控制台需要管理组账号登录，普通玩家无需访问；需要开服、重启或查看资源占用时，请联系管理组。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 规则相关 -->
+            <section class="faq-group">
+                <h2 class="faq-group-title"><i class="fas fa-gavel"></i> 规则相关</h2>
+                <div class="faq">
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-chunk">
+                            <span class="accordion-icon"><i class="fas fa-map-pin"></i></span>
+                            <span class="accordion-title">区块常加载怎么申请？</span>
+                            <span class="accordion-badge">审批</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-chunk">
+                            <p>先填写 <a href="https://v.wjx.cn/vm/YYvvb5z.aspx" target="_blank" rel="noopener" class="link-icon">区块加载申请问卷</a>，获得批准后才能启用。</p>
+                            <p>并且只允许 <strong>末影珍珠加载器</strong> 这种弱加载方式，其他强加载手段一律禁止。详见 <a href="rules.html#acc-kafu" class="link-icon">卡服篇 #4</a>。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-copy">
+                            <span class="accordion-icon"><i class="fas fa-copy"></i></span>
+                            <span class="accordion-title">物品复制机到底能不能用？</span>
+                            <span class="accordion-badge">重点</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-copy">
+                            <p>只能复制 <strong>可量产</strong> 的物品（铁、金、钻石、木材、农作物、常规怪物掉落等），并且复制设施需要在管理组 <strong>登记坐标与原理</strong>。</p>
+                            <p>无法量产的物品 <strong>一律禁止复制</strong>，例如下界之星、龙蛋、鞘翅、附魔金苹果、不死图腾、海洋之心、回响碎片等。违规者复制所得全部销毁、装置强制拆除，并视情节封禁。详见 <a href="rules.html#acc-item" class="link-icon">物品篇</a>。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-grief">
+                            <span class="accordion-icon"><i class="fas fa-shield-alt"></i></span>
+                            <span class="accordion-title">东西被偷了 / 建筑被破坏了怎么办？</span>
+                            <span class="accordion-badge">举报</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-grief">
+                            <p>先不要自行拆除或改动现场，尽量保留证据：</p>
+                            <ul>
+                                <li>被破坏前后的对比截图</li>
+                                <li>具体坐标与发现时间</li>
+                                <li>可疑玩家的 ID（如果看到）</li>
+                            </ul>
+                            <p>把材料发给服主 QQ <strong>3648142170</strong>，管理组会核实并按规定处理。详见 <a href="rules.html#acc-behavior" class="link-icon">行为篇</a>。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-appeal">
+                            <span class="accordion-icon"><i class="fas fa-balance-scale"></i></span>
+                            <span class="accordion-title">被处罚了，怎么申诉？</span>
+                            <span class="accordion-badge">流程</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-appeal">
+                            <p>处罚生效后 <strong>7 天内</strong> 向管理组提交申诉，说明情况并附证据，管理组会在 <strong>3 个工作日</strong> 内答复；永久封禁类申诉需全体管理员复核。申诉期间原处罚继续执行。</p>
+                            <p>详见 <a href="rules.html#acc-punish" class="link-icon">处罚篇</a>。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 其他 -->
+            <section class="faq-group">
+                <h2 class="faq-group-title"><i class="fas fa-comments"></i> 联系与名单</h2>
+                <div class="faq">
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-contact">
+                            <span class="accordion-icon"><i class="fab fa-qq"></i></span>
+                            <span class="accordion-title">怎么联系管理组？</span>
+                            <span class="accordion-badge">QQ</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-contact">
+                            <p>服主 <strong>xxy150310</strong>：QQ <strong>3648142170</strong>（加群、申请、举报、申诉都走这里）</p>
+                            <p>管理员 <strong>YuanHollow</strong>：可在游戏内或群里联系。</p>
+                            <p>服务器托管平台：<a href="https://app.rainyun.com/apps/rgs/45794/detail" target="_blank" rel="noopener" class="link-icon">雨云游戏云控制台</a>（仅管理组登录）。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-list">
+                            <span class="accordion-icon"><i class="fas fa-users"></i></span>
+                            <span class="accordion-title">我能加入玩家名单吗？</span>
+                            <span class="accordion-badge">名单</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-list">
+                            <p>名单收录长期活跃的玩家，由管理组统一补录。想让自己的名字出现在 <a href="players.html" class="link-icon">玩家名单</a> 里，联系服主 QQ 说一声就好。</p>
+                            <p>需要更正或移除自己的名字，同样联系管理组处理。</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" data-target="faq-bug">
+                            <span class="accordion-icon"><i class="fas fa-bug"></i></span>
+                            <span class="accordion-title">发现规则漏洞或页面错误？</span>
+                            <span class="accordion-badge">反馈</span>
+                            <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="accordion-body" id="faq-bug">
+                            <p>本 Wiki 由管理组维护，源码托管在 GitHub（<a href="https://github.com/xxy150310git/guiye" target="_blank" rel="noopener" class="link-icon">xxy150310git/guiye</a>）。</p>
+                            <p>发现内容有误、链接失效或状态面板不更新，可以直接把页面地址和问题截图发给服主 QQ，我们会尽快修正。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section style="margin-top:2rem;">
+                <div style="background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border-light);padding:1.4rem 2rem;box-shadow:var(--shadow-sm);">
+                    <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.75;">
+                        <i class="fas fa-info-circle"></i> 本页内容随服务器调整更新，与 <a href="rules.html" class="link-icon">服务器规则</a> 冲突时以规则页为准。
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <span>
+                <i class="fas fa-cube"></i> 归野 · 生存服务器
+                <span style="margin:0 0.5rem;">·</span>
+                <i class="fab fa-qq"></i> 服主 QQ：3648142170
+            </span>
+            <span>
+                <i class="fas fa-code-branch"></i> 基于 OI-Wiki 风格构建
+                <span style="margin:0 0.4rem;">·</span>
+                <a href="#" id="backToTop"><i class="fas fa-arrow-up"></i> 回到顶部</a>
+            </span>
+        </footer>
+
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -853,3 +853,331 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================================
+   实时状态面板
+   ============================================================ */
+.status-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1.6rem;
+}
+
+.status-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.status-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 0;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #9aa4af;
+    flex-shrink: 0;
+}
+
+.status-panel[data-state="online"] .status-dot {
+    background: #2da44e;
+    box-shadow: 0 0 0 4px rgba(45, 164, 78, 0.15);
+    animation: stPulse 2s ease-in-out infinite;
+}
+
+.status-panel[data-state="offline"] .status-dot {
+    background: #cf222e;
+    box-shadow: 0 0 0 4px rgba(207, 34, 46, 0.15);
+}
+
+.status-panel[data-state="error"] .status-dot {
+    background: #d4a72c;
+    box-shadow: 0 0 0 4px rgba(212, 167, 44, 0.15);
+}
+
+@keyframes stPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.status-motd {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.status-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-left: auto;
+}
+
+.status-updated {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.btn-refresh {
+    border: 1px solid var(--border-light);
+    background: #f6f8fa;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.15s ease;
+    font-family: inherit;
+}
+
+.btn-refresh:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    background: #fff;
+}
+
+.btn-refresh.spinning i {
+    animation: stSpin 0.9s linear infinite;
+}
+
+@keyframes stSpin {
+    to { transform: rotate(360deg); }
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+}
+
+.status-tile {
+    background: #f8fafc;
+    border: 1px solid var(--border-light);
+    border-radius: 9px;
+    padding: 0.75rem 0.9rem;
+}
+
+.st-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.st-value {
+    font-family: var(--font-mono);
+    font-size: 1.45rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-top: 0.15rem;
+    color: var(--text-primary);
+}
+
+.st-value.is-online { color: var(--accent-green); }
+.st-value.is-offline { color: var(--accent-red); }
+.st-value.is-muted { color: #9aa4af; }
+
+.st-sub {
+    font-size: 0.7rem;
+    color: #8b949e;
+    margin-top: 0.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.status-addr {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.8rem;
+    margin-top: 0.95rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed var(--border-light);
+}
+
+.addr-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.addr-label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.addr-item code {
+    font-family: var(--font-mono);
+    background: #f0f2f4;
+    padding: 0.15rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+}
+
+.btn-copy {
+    border: 1px solid var(--border-light);
+    background: #fff;
+    color: var(--text-muted);
+    border-radius: 5px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    transition: all 0.15s ease;
+}
+
+.btn-copy:hover {
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+.btn-copy.done {
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+.online-list {
+    margin-top: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.online-list .chip {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: #eef6ff;
+    color: #0550ae;
+    border: 1px solid #cfe4ff;
+    border-radius: 20px;
+    padding: 0.12rem 0.6rem;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-group {
+    margin-bottom: 1.4rem;
+}
+
+.faq-group-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.faq-group-title i {
+    color: var(--accent-blue);
+}
+
+.faq .accordion-header {
+    padding: 0.8rem 1.4rem;
+}
+
+.faq .accordion-header .accordion-title {
+    font-size: 0.98rem;
+    font-weight: 600;
+}
+
+.faq .accordion-header .accordion-icon {
+    font-size: 1rem;
+    width: 1.3rem;
+}
+
+.faq .accordion-body {
+    padding: 0 1.4rem 1.2rem 1.4rem;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+.faq .accordion-body p + p {
+    margin-top: 0.55rem;
+}
+
+.faq .accordion-body ul {
+    margin: 0.4rem 0 0 1.2rem;
+}
+
+.faq .accordion-body li {
+    margin-bottom: 0.25rem;
+}
+
+/* ============================================================
+   联系方式 / 信息行
+   ============================================================ */
+.contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px dashed var(--border-light);
+}
+
+.contact-row:last-child {
+    border-bottom: none;
+}
+
+.contact-role {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    display: block;
+}
+
+.contact-val {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.info-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 0.7rem;
+    padding-top: 0.6rem;
+    border-top: 1px dashed var(--border-light);
+}
+
+@media (max-width: 900px) {
+    .status-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+}

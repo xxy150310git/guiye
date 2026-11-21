@@ -73,6 +73,80 @@
         });
     }
 
+    /* ===== 一键复制（[data-copy]） ===== */
+    function legacyCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try {
+            ok = document.execCommand('copy');
+        } catch (e) {
+            ok = false;
+        }
+        document.body.removeChild(ta);
+        return ok;
+    }
+
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var text = btn.getAttribute('data-copy') || '';
+            var original = btn.innerHTML;
+            function done(success) {
+                btn.innerHTML = success ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>';
+                btn.classList.add('done');
+                setTimeout(function () {
+                    btn.innerHTML = original;
+                    btn.classList.remove('done');
+                }, 1600);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function () {
+                    done(true);
+                }).catch(function () {
+                    done(legacyCopy(text));
+                });
+            } else {
+                done(legacyCopy(text));
+            }
+        });
+    });
+
+    /* ===== 站点配置注入（js/config.js） ===== */
+    (function () {
+        var cfg = window.WIKI_CONFIG || {};
+
+        document.querySelectorAll('[data-cfg]').forEach(function (node) {
+            var path = node.getAttribute('data-cfg').split('.');
+            var val = path.reduce(function (obj, key) {
+                return obj && obj[key] !== undefined ? obj[key] : undefined;
+            }, cfg);
+            if (val !== undefined && val !== '') node.textContent = val;
+        });
+
+        /* 动态地图：配置了地址就显示入口，否则保持“部署中”占位 */
+        var map = cfg.map || {};
+        var link = document.getElementById('mapLink');
+        var frame = document.getElementById('mapFrame');
+        var placeholder = document.getElementById('mapPlaceholder');
+        if (link) {
+            if (map.url) {
+                link.href = map.url;
+                link.style.display = '';
+                if (placeholder) placeholder.style.display = 'none';
+                if (frame) {
+                    frame.src = map.url;
+                    frame.style.display = 'block';
+                }
+            } else {
+                link.style.display = 'none';
+            }
+        }
+    })();
+
     /* ===== 折叠面板 ===== */
     document.querySelectorAll('.accordion-header').forEach(function (header) {
         header.addEventListener('click', function () {

@@ -31,6 +31,7 @@
                 <a class="active" href="index.html"><i class="fas fa-home"></i> 首页</a>
                 <a href="rules.html"><i class="fas fa-gavel"></i> 服务器规则</a>
                 <a href="players.html"><i class="fas fa-users"></i> 玩家名单</a>
+                <a href="faq.html"><i class="fas fa-question-circle"></i> 常见问题</a>
             </div>
 
             <div class="nav-section">
@@ -62,6 +63,65 @@
                 </div>
             </header>
 
+            <!-- 实时服务器状态 -->
+            <section class="status-panel" id="statusPanel" data-state="loading">
+                <div class="status-head">
+                    <div class="status-title">
+                        <span class="status-dot"></span>
+                        <strong id="stState">正在连接服务器…</strong>
+                        <span class="status-motd" id="stMotd"></span>
+                    </div>
+                    <div class="status-actions">
+                        <span class="status-updated" id="stUpdated">正在连接…</span>
+                        <button class="btn-refresh" id="stRefresh" type="button">
+                            <i class="fas fa-sync-alt"></i> 刷新
+                        </button>
+                    </div>
+                </div>
+
+                <div class="status-grid">
+                    <div class="status-tile">
+                        <div class="st-label"><i class="fas fa-users"></i> 在线人数</div>
+                        <div class="st-value is-muted" id="stPlayers">—</div>
+                        <div class="st-sub" id="stPlayersSub">正在查询</div>
+                    </div>
+                    <div class="status-tile">
+                        <div class="st-label"><i class="fas fa-signal"></i> 延迟</div>
+                        <div class="st-value is-muted" id="stPing">—</div>
+                        <div class="st-sub" id="stPingSub">接口往返 · 非游戏延迟</div>
+                    </div>
+                    <div class="status-tile">
+                        <div class="st-label"><i class="fas fa-cubes"></i> 当前版本</div>
+                        <div class="st-value is-muted" id="stVersion">—</div>
+                        <div class="st-sub" id="stVersionSub">NeoForge 模组服</div>
+                    </div>
+                    <div class="status-tile">
+                        <div class="st-label"><i class="fas fa-server"></i> 开服状态</div>
+                        <div class="st-value is-muted" id="stStatus">—</div>
+                        <div class="st-sub" id="stStatusSub">自动刷新</div>
+                    </div>
+                </div>
+
+                <div class="online-list" id="onlineList"></div>
+
+                <div class="status-addr">
+                    <div class="addr-item">
+                        <span class="addr-label">主地址</span>
+                        <code>zjt.rainplay.cn:19532</code>
+                        <button class="btn-copy" type="button" data-copy="zjt.rainplay.cn:19532" title="复制地址">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="addr-item">
+                        <span class="addr-label">IP 直连</span>
+                        <code>43.226.59.13:19532</code>
+                        <button class="btn-copy" type="button" data-copy="43.226.59.13:19532" title="复制 IP">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
             <!-- 首页双栏 -->
             <div class="home-grid">
                 <!-- 左栏：新闻 + 状态查询命令 -->
@@ -79,7 +139,7 @@
                     <!-- 服务器状态查询命令卡片 -->
                     <div class="home-card">
                         <div class="card-title">
-                            <i class="fab fa-python"></i> 服务器状态查询
+                            <i class="fab fa-python"></i> 命令行查询（进阶）
                             <span style="margin-left:auto; font-size:0.8rem; font-weight:400;">
                                 <button class="btn-code-toggle" id="codeToggleBtn">展开代码</button>
                                 <button class="btn-code-copy" id="codeCopyBtn"><i class="fas fa-copy"></i> 复制</button>
@@ -94,7 +154,7 @@
                                     <pre>
 <span class="comment">#!/usr/bin/env python3</span>
 <span class="comment"># 服务器状态查询工具</span>
-<span class="comment"># 硬编码地址: om.rainplay.cn:14851</span>
+<span class="comment"># 服务器地址: zjt.rainplay.cn:19532</span>
 
 <span class="keyword">import</span> sys
 <span class="keyword">import</span> socket
@@ -102,11 +162,11 @@
 <span class="keyword">import</span> struct
 <span class="keyword">import</span> time
 
-<span class="var">SERVER_HOST</span> <span class="operator">=</span> <span class="string">"om.rainplay.cn"</span>
-<span class="var">SERVER_PORT</span> <span class="operator">=</span> <span class="number">14851</span>
+<span class="var">SERVER_HOST</span> <span class="operator">=</span> <span class="string">"zjt.rainplay.cn"</span>
+<span class="var">SERVER_PORT</span> <span class="operator">=</span> <span class="number">19532</span>
 
 <span class="comment"># ---------- Minecraft 协议 ----------</span>
-<span class="var">PROTOCOL_VERSION</span> <span class="operator">=</span> <span class="number">754</span>
+<span class="var">PROTOCOL_VERSION</span> <span class="operator">=</span> <span class="number">767</span>
 
 <span class="keyword">def</span> <span class="func">_write_varint</span>(buf, value):
     <span class="keyword">while</span> <span class="builtin">True</span>:
@@ -257,13 +317,59 @@
                 <!-- 右栏：地图 + 快速链接 -->
                 <div>
                     <div class="home-card" style="margin-bottom:1.2rem;">
-                        <div class="card-title"><i class="fas fa-map"></i> 服务器地图</div>
+                        <div class="card-title">
+                            <i class="fas fa-map"></i> 服务器地图
+                            <a href="#" id="mapLink" target="_blank" rel="noopener" class="link-icon" style="margin-left:auto;font-size:0.8rem;font-weight:400;display:none;">
+                                打开地图 <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
                         <div class="card-body">
-                            <div class="map-placeholder">
+                            <iframe id="mapFrame" title="服务器动态地图" loading="lazy"
+                                    style="display:none;width:100%;height:220px;border:1px solid var(--border-light);border-radius:8px;"></iframe>
+                            <div class="map-placeholder" id="mapPlaceholder">
                                 <i class="fas fa-map-signs"></i>
-                                <div>动态地图敬请期待</div>
-                                <div style="font-size:0.8rem;margin-top:0.2rem;">当前世界：归野 · 生存大陆</div>
-                                <div style="font-size:0.75rem;margin-top:0.1rem;color:#8b949e;">坐标: 0, 64, 0 (主城)</div>
+                                <div>动态地图部署中</div>
+                                <div style="font-size:0.8rem;margin-top:0.2rem;">当前世界：<span data-cfg="server.world">归野 · 生存大陆</span></div>
+                                <div style="font-size:0.75rem;margin-top:0.1rem;color:#8b949e;">主城坐标 0, 64, 0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="home-card" style="margin-bottom:1.2rem;">
+                        <div class="card-title"><i class="fas fa-address-book"></i> 联系方式</div>
+                        <div class="card-body">
+                            <div class="contact-row">
+                                <div>
+                                    <span class="contact-role">服主 · xxy150310</span>
+                                    <span class="contact-val" data-cfg="contact.ownerQQ">3648142170</span>
+                                </div>
+                                <button class="btn-copy" type="button" data-copy="3648142170" title="复制 QQ 号">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <div class="contact-row">
+                                <div>
+                                    <span class="contact-role">管理员</span>
+                                    <span class="contact-val">YuanHollow</span>
+                                </div>
+                                <a href="players.html" class="link-icon" style="font-size:0.78rem;">玩家名单</a>
+                            </div>
+                            <div class="contact-row">
+                                <div>
+                                    <span class="contact-role">必备模组</span>
+                                    <span class="contact-val">QQ 群文件</span>
+                                </div>
+                                <a href="faq.html#faq-mod" class="link-icon" style="font-size:0.78rem;">说明</a>
+                            </div>
+                            <div class="contact-row">
+                                <div>
+                                    <span class="contact-role">运行平台</span>
+                                    <span class="contact-val">雨云游戏云</span>
+                                </div>
+                                <a href="https://app.rainyun.com/apps/rgs/45794/detail" target="_blank" rel="noopener" class="link-icon" style="font-size:0.78rem;">控制台</a>
+                            </div>
+                            <div class="info-note">
+                                <i class="fas fa-info-circle"></i> 加群、申请、举报都可通过服主 QQ 联系；雨云控制台需管理组登录。
                             </div>
                         </div>
                     </div>
@@ -274,7 +380,8 @@
                             <div class="quick-links">
                                 <a href="rules.html"><i class="fas fa-gavel"></i> 服务器规则</a>
                                 <a href="https://v.wjx.cn/vm/YYvvb5z.aspx" target="_blank"><i class="fas fa-pen-fancy"></i> 区块加载申请</a>
-                                <a href="#"><i class="fas fa-download"></i> 客户端下载</a>
+                                <a href="faq.html"><i class="fas fa-question-circle"></i> 常见问题</a>
+                                <a href="faq.html#faq-mod"><i class="fas fa-box-open"></i> 必备模组</a>
                                 <a href="players.html"><i class="fas fa-users"></i> 玩家名录</a>
                             </div>
                             <div style="margin-top:0.6rem;font-size:0.8rem;color:var(--text-muted);border-top:1px solid var(--border-light);padding-top:0.6rem;">
@@ -290,6 +397,8 @@
         <footer class="footer">
             <span>
                 <i class="fas fa-cube"></i> 归野 · 生存服务器
+                <span style="margin:0 0.5rem;">·</span>
+                <i class="fab fa-qq"></i> 服主 QQ：3648142170
             </span>
             <span>
                 <i class="fas fa-code-branch"></i> 基于 OI-Wiki 风格构建
@@ -303,6 +412,8 @@
     <!-- ============================================================ -->
     <!-- JavaScript -->
     <!-- ============================================================ -->
+    <script src="js/config.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/status.js"></script>
 </body>
 </html>
